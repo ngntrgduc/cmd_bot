@@ -17,9 +17,9 @@ class Docs_searcher(commands.Cog):
     async def on_ready(self):
         print("Docs_searcher commands is ready")
 
-    @commands.command()
-    async def docs(self, ctx, *, req: str):
-        tmp = docs_searching(req, 'nol')
+    @commands.command(help = 'lấy tối đa 5 tài liệu bạn muốn')
+    async def docs(self, ctx, *, docs_title: str):
+        tmp = docs_searching(docs_title, 'nol')
         embed = discord.Embed(
             title = 'Docs searching bot',
             color = discord.Color.orange()
