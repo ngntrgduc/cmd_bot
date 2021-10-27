@@ -5,11 +5,14 @@ import os.path
 def load():
     global data
 
-    filePath = os.getenv('STORE_PATH')
-    if not os.path.isfile(filePath):
+    storePath = os.getenv('STORE_PATH')
+    if storePath == None:
+        storePath = 'store.json'
+
+    if not os.path.isfile(storePath):
         data = {}
         writeData()
-    f = open(filePath, 'r')
+    f = open(storePath, 'r')
 
     fileContent = f.read()
     if fileContent == '':
@@ -33,6 +36,10 @@ def delete(key: str):
     writeData()
 
 def writeData():
-    f = open(os.getenv('STORE_PATH'), 'w')
+    storePath = os.getenv('STORE_PATH')
+    if storePath == None:
+        storePath = 'store.json'
+        
+    f = open(storePath, 'w')
     f.write(json.dumps(data))
     f.close()
