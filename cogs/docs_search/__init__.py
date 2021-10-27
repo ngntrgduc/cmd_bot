@@ -1,10 +1,7 @@
-import os
 import discord
 import requests
-import lxml
 from bs4 import BeautifulSoup
 from discord.colour import Color
-import bs4
 from discord.ext import commands
 from urllib.parse import urlparse
 
