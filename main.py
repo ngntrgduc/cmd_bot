@@ -3,8 +3,11 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
+import store
+
 # ======= Configs =======
 load_dotenv()
+store.load()
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 COMMAND_PREFIX = os.getenv('COMMAND_PREFIX')
 ADMIN_ROLE = os.getenv('ADMIN_ROLE')
