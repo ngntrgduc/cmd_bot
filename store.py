@@ -16,7 +16,7 @@ def load():
 
     fileContent = f.read()
     if fileContent == '':
-        fileContent = '\{\}'
+        fileContent = '{}'
 
     data = json.loads(fileContent)
     if not isinstance(data, dict):
@@ -39,7 +39,7 @@ def writeData():
     storePath = os.getenv('STORE_PATH')
     if storePath == None:
         storePath = 'store.json'
-        
+
     f = open(storePath, 'w')
     f.write(json.dumps(data))
     f.close()
