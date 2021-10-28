@@ -54,13 +54,15 @@ class MatchPercent(commands.Cog):
 
                 p = (firstPercent + secondPercent + thirdPercent)/2
                 percent = math.sqrt(p * (p - firstPercent) * (p - secondPercent) * (p - thirdPercent))
+            else :
+                percent = (firstPercent + secondPercent + thirdPercent) / 3;
 
             step = 5
             while (percent < 0.01 and step > 0):
                 percent = percent * 10
                 step -= 1
 
-            percent = min(1, percent*10)
+            #percent = min(1, percent*10)
 
             embed = discord.Embed(
                 title="Đôi bạn có hợp nhau không ?",
