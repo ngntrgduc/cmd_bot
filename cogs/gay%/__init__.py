@@ -25,7 +25,6 @@ class GayPercent(commands.Cog):
             percent = randomPercent(member)
             description.append(f'**{member.display_name}** có {percent}% tỉ lệ gay')
             tuple_get = (f'{member.display_name}', percent)
-            print("này thuộc về member",tuple_get)
             if (tuple_get in board):
                 pass
             else:
@@ -43,7 +42,6 @@ class GayPercent(commands.Cog):
             flag = '🏳️‍🌈' if percent > 25 else '🏳️'
             ctx.author = str(ctx.author)
             tuple_get = (f'{ctx.author[:ctx.author.find("#")]}', percent)
-            print("này thuộc về ctx",tuple_get)
             if (tuple_get in board):
                 pass
             else:
