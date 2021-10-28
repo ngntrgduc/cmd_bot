@@ -66,7 +66,7 @@ class MatchPercent(commands.Cog):
 
             embed = discord.Embed(
                 title="Đôi bạn có hợp nhau không ?",
-                description=f'{str(round(percent*100, 0))} %' +('♥' if percent >= 0.5 else '😁'),
+                description=f'{str(round(percent*100, 0))} %' +(' ♥' if percent >= 0.5 else ' 😁'),
                 color=discord.Color.orange(),
             )
 
