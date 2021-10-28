@@ -2,6 +2,8 @@ import discord
 import random
 from discord.ext import commands
 from datetime import datetime
+import store
+
 
 class GayPercent(commands.Cog):
 
@@ -15,10 +17,20 @@ class GayPercent(commands.Cog):
     @commands.command(aliases=['gay%'], help='Đo độ cong của người dùng')
     async def howgay(self, ctx: commands.Context, *mentions: discord.Member):
         description = []
+        board = store.get("board")
+        if board == None:
+            board = []
 
         for member in mentions:
             percent = randomPercent(member)
             description.append(f'**{member.display_name}** có {percent}% tỉ lệ gay')
+            tuple_get = (f'{member.display_name}', percent)
+            print("này thuộc về member",tuple_get)
+            if (tuple_get in board):
+                pass
+            else:
+                board.append(tuple_get)
+            store.set("board", board)
 
         embed = discord.Embed(
             title="🏳️‍🌈 Bạn có thẳng như mình nghĩ?",
@@ -29,15 +41,26 @@ class GayPercent(commands.Cog):
         if len(description) == 0:
             percent = randomPercent(ctx.author)
             flag = '🏳️‍🌈' if percent > 25 else '🏳️'
+            ctx.author = str(ctx.author)
+            tuple_get = (f'{ctx.author[:ctx.author.find("#")]}', percent)
+            print("này thuộc về ctx",tuple_get)
+            if (tuple_get in board):
+                pass
+            else:
+                board.append(tuple_get)
+            store.set("board", board)
             await ctx.send(f'{flag} Bạn có {percent}% tỉ lệ gay')
         else:
             await ctx.send(embed=embed)
 
+
 def randomPercent(seed):
     today = datetime.today().strftime('%Y-%m-%d')
+    store.set("time",today)
     seed = f'{seed}/{today}'
     rng = random.Random(seed)
     return rng.randint(0, 100)
+
 
 def setup(client):
     client.add_cog(GayPercent(client))
