@@ -25,7 +25,9 @@ class gayboard(commands.Cog):
         board = store.get("board")
         board = sorted(board, key=lambda x: x[1] ,reverse=True)
         out = []
-        for i in range(0, len(board)):
+        if (k:=(len(board) >= 10):
+            k =10
+        for i in range(0, k):
             out.append(f'{i+1} : {board[i][0]} có tỉ lệ gay {board[i][1]}%')
 
         embed = discord.Embed(
