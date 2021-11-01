@@ -25,8 +25,9 @@ class gayboard(commands.Cog):
         board = store.get("board")
         board = sorted(board, key=lambda x: x[1] ,reverse=True)
         out = []
-        if (k:=(len(board) >= 10):
-            k =10
+        k = len(board)
+        if (k >= 10):
+            k = 10
         for i in range(0, k):
             out.append(f'{i+1} : {board[i][0]} có tỉ lệ gay {board[i][1]}%')
 
