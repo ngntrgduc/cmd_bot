@@ -13,15 +13,15 @@ class gayboard(commands.Cog):
     # Khi lệnh được tạo ra thì sẽ chạy hàm này đầu tiên
     @commands.Cog.listener()
     async def on_ready(self):
+        print("gayboard is running")
+
+    @commands.command(help='Bảng xếp hạng độ gay trong ngày')
+    async def gayboard(self,ctx:commands.Context):
         today = datetime.today().strftime('%Y-%m-%d')
         yesterday = store.get("time")
         if today >= yesterday:
             store.delete("board")
             store.set("board", [])
-        print("gayboard is running")
-
-    @commands.command(help='Bảng xếp hạng độ gay trong ngày')
-    async def gayboard(self,ctx:commands.Context):
         board = store.get("board")
         board = sorted(board, key=lambda x: x[1] ,reverse=True)
         out = []
