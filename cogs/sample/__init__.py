@@ -10,7 +10,7 @@ class Sample(commands.Cog):
     # Khi lệnh được tạo ra thì sẽ chạy hàm này đầu tiên
     @commands.Cog.listener()
     async def on_ready(self):
-        pass
+        print('Sample command is ready')
 
     # Định nghĩa lệnh "sample_cmd"
     @commands.command()
