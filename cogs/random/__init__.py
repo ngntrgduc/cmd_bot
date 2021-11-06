@@ -14,7 +14,8 @@ class Sample(commands.Cog):
 
     @commands.command(aliases=['choose'])
     async def pick(self, ctx, *, message: str):
-        arr = map(lambda s: s.strip(), re.split(',|\|', message))
+        arr = re.split(',|\|', message)
+        arr = map(lambda s: s.strip(), arr)
         arr = filter(lambda s: len(s) > 0, arr)
         arr = list(arr)
 
