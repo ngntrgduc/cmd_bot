@@ -7,7 +7,7 @@ import store
 load_dotenv()
 Var_Channel = os.getenv("VAR_CHANNEL_ID")
 Cfs_Channel = os.getenv("CFS_CHANNEL_ID")
-COMMAND_PREFIX = os.getenv('COMMAND_PREFIX')
+
 
 class Cfs(commands.Cog):
 
@@ -62,8 +62,10 @@ class Cfs(commands.Cog):
             pass
 
         # back_up not fisnish yet
-        if (back_up := store.get("author")) == None:
+        if (store.get("author")) == None:
             back_up = []
+        else :
+            back_up = store.get("author")
         back_up.append(str(sub(str(user.id))))
         store.set("author", back_up)
 
