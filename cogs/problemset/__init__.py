@@ -275,9 +275,6 @@ class problemset(commands.Cog):
             )
         await ctx.send(embed=embed)
 
-
-
-
 # setup cog
 def setup(client):
     client.add_cog(problemset(client))

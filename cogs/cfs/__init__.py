@@ -2,10 +2,9 @@ import os
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
-import store
+from utils import store
 from datetime import datetime
 
-load_dotenv()
 Var_Channel = os.getenv("VAR_CHANNEL_ID")
 Cfs_Channel = os.getenv("CFS_CHANNEL_ID")
 

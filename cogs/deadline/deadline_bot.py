@@ -7,7 +7,7 @@
 
 import os
 from typing import AsyncIterator
-import store
+from utils import store
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -16,7 +16,6 @@ import datetime
 import regex
 from dotenv import load_dotenv
 
-load_dotenv()
 store.load()
 TIME_ZONE = os.getenv('TIME_ZONE')
 
@@ -70,7 +69,6 @@ class action():
             store.set("deadline", raw_data)
         except:
             print(f'error in deadline delete key = {key} | code = {code}')
-
 
     def get_data(key):
         '''
@@ -144,7 +142,6 @@ class action():
         except:
             pass
         store.set("deadline", raw_data)
-
 
 class display():
 
@@ -246,13 +243,11 @@ class display():
                 description = f'server time: {now}',
                 color = discord.Color.red()
             )
-            file = discord.File(f'error.jpg' ,filename="error.jpg")
+            file = discord.File(f'assets/error.jpg' ,filename="assets/error.jpg")
             return embed, file
-
 
 if __name__ == '__main__':
     raw_data = store.get("deadline")
     st = str((datetime.datetime.utcnow() + datetime.timedelta(hours = int(TIME_ZONE))).strftime('%H:%M:%S %d/%m/%Y'))
     raw_data['last_update'] = st
     store.set("deadline", raw_data)
-    pass

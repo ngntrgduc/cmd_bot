@@ -14,7 +14,6 @@ import urllib.request
 import googletrans
 from googletrans import Translator
 
-load_dotenv()
 WELCOME_CHANNEL_ID = os.getenv("WELCOME_CHANNEL_ID")
 
 class Get_books(commands.Cog):

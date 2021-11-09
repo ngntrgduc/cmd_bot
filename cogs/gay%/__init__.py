@@ -2,8 +2,7 @@ import discord
 import random
 from discord.ext import commands
 from datetime import datetime
-import store
-
+from utils import store
 
 class GayPercent(commands.Cog):
 
@@ -51,14 +50,12 @@ class GayPercent(commands.Cog):
         else:
             await ctx.send(embed=embed)
 
-
 def randomPercent(seed):
     today = datetime.today().strftime('%Y-%m-%d')
     store.set("time",today)
     seed = f'{seed}/{today}'
     rng = random.Random(seed)
     return rng.randint(0, 100)
-
 
 def setup(client):
     client.add_cog(GayPercent(client))

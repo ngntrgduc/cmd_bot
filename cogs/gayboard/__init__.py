@@ -2,8 +2,7 @@ import os
 import discord
 from discord.ext import commands
 from datetime import datetime
-import store
-
+from utils import store
 
 class gayboard(commands.Cog):
 

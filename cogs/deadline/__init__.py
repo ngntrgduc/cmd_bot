@@ -2,7 +2,7 @@ import os
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
-import store
+from utils import store
 import unicodedata
 from cogs.deadline import deadline_bot
 COMMAND_LIST = [
